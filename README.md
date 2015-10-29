@@ -1,2 +1,2 @@
 # ESPalimPalim
-HaSi Door Bell
+ESP8266 Upstair Door Bell Implementation. Sends MQTT messages.
