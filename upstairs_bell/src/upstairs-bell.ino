@@ -6,8 +6,8 @@
 #define DEBOUNCE_HIGH 500
 
 const String ssid     = "HaSi-Kein-Internet-Legacy";
-const String password = "bugsbunny";
-const String broker   = "atlas";
+const String password = "";
+const String broker   = "atuin";
 int port              = 1883;
 
 int pin = 2;
