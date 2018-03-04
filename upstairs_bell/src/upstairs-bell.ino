@@ -1,13 +1,17 @@
 #include <SPI.h>
 #include <ESP8266WiFi.h>
+#include <ESP8266mDNS.h>
+#include <ArduinoOTA.h>
 #include <Espanol.h>
 
 #define DEBOUNCE_LOW 50
 #define DEBOUNCE_HIGH 500
 
+#define OTA_PASSWORD ""
+
 const String ssid     = "HaSi-Kein-Internet-Legacy";
 const String password = "";
-const String broker   = "atuin";
+const String broker   = "mqtt.hasi";
 int port              = 1883;
 
 int pin = 2;
@@ -22,10 +26,15 @@ void setup()
 
     Espanol.setDebug(true);
     Espanol.begin(ssid, password, "espalimpalim", broker, port);
+
+    ArduinoOTA.setHostname("espalimpalim");
+    ArduinoOTA.setPassword(OTA_PASSWORD);
+    ArduinoOTA.begin();
 }
 
 void loop()
 {
+    ArduinoOTA.handle();
     Espanol.loop();
 
     int current = digitalRead(pin);
